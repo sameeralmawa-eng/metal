@@ -14,6 +14,8 @@ import {
   ThermometerSnowflake,
   Gauge,
   ChevronDown,
+  Download,
+  FileText,
 } from 'lucide-react';
 import { useERP } from '@/context/ERPContext';
 import { NavTab } from './Sidebar';
@@ -141,6 +143,18 @@ interface HeaderProps {
               <Sparkles className="w-3.5 h-3.5 text-blue-600" />
               <span className="hidden md:inline">100KG Test Data</span>
             </button>
+
+            {/* Direct Download Hindi Guide .txt */}
+            <a
+              href="/SIDEBAR_MENUS_HINDI_GUIDE.txt"
+              download="SIDEBAR_MENUS_HINDI_GUIDE.txt"
+              className="py-2 px-2.5 sm:px-3 rounded-xl bg-blue-50/90 hover:bg-blue-100 text-blue-700 text-xs font-bold border border-blue-200 transition-all flex items-center gap-1.5 shadow-xs cursor-pointer"
+              title="Download Hindi Sidebar Guide (.txt)"
+            >
+              <Download className="w-3.5 h-3.5 text-blue-600" />
+              <span className="hidden lg:inline">Hindi Guide (.txt)</span>
+              <span className="lg:hidden">Hindi .txt</span>
+            </a>
 
         {/* Reset Data Button */}
         <button

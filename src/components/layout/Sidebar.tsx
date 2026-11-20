@@ -13,6 +13,7 @@ import {
   Workflow,
   ChevronRight,
   Sparkles,
+  Download,
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -159,6 +160,16 @@ export const Sidebar: React.FC<SidebarProps> = ({
                     <Workflow className="w-3.5 h-3.5" />
                     Launch 15-Step Guide
                   </button>
+
+                  <a
+                    href="/SIDEBAR_MENUS_HINDI_GUIDE.txt"
+                    download="SIDEBAR_MENUS_HINDI_GUIDE.txt"
+                    className="mt-1.5 w-full py-1.5 px-2 rounded-xl text-[11px] font-bold text-blue-700 bg-white/90 hover:bg-blue-50 border border-blue-200/90 shadow-xs flex items-center justify-center gap-1.5 transition-all cursor-pointer"
+                    title="Download Hindi Guide (.txt)"
+                  >
+                    <Download className="w-3.5 h-3.5 text-blue-600" />
+                    <span>Download Hindi Guide (.txt)</span>
+                  </a>
                 </div>
               </div>
             </div>
