@@ -1,0 +1,358 @@
+================================================================================
+APEX METAL & ROLLING MILLS ERP - COMPLETE SOFTWARE FUNCTIONALITY GUIDE
+================================================================================
+System Name:       Apex Metal Melting & Rolling Manufacturing ERP
+Design Edition:    White & Blue Frosted Glass Industrial Edition
+Architecture:      Next.js High-Performance Client-Side Application
+Target Industry:   Induction Furnace Melting Units, Billet Casters, Rolling Mills
+Deployment:        Static Demo / Offline Capable / Cloud & Local Server Ready
+Prepared For:      Client Presentation, Stakeholder Review & Technical Audit
+================================================================================
+
+TABLE OF CONTENTS:
+--------------------------------------------------------------------------------
+1. Executive System Overview
+2. Core Differentiator: Automatic Weight Loss & Burning Loss Engine
+3. Standard 100 KG -> 97 KG Verification Scenario
+4. In-Depth Module-by-Module Functionality:
+   - Module A: Executive Plant Dashboard & Live Telemetry
+   - Module B: Manufacturing Management & Heat Orders
+   - Module C: 4-Store Real-Time Inventory & Batch Traceability
+   - Module D: Purchase Inward & Supplier Management
+   - Module E: Sales Dispatch, GST Billing & Invoicing
+   - Module F: Double-Entry Accounting & Financial Statements
+   - Module G: Master Data Management (11 Master Tables)
+   - Module H: 15 Factory Analytical Reports & Excel Export
+   - Module I: Interactive 15-Step Workflow Guide
+5. Technical Architecture & Data Integrity Safeguards
+6. Client Presentation Script & Demonstration Walkthrough Tips
+================================================================================
+
+
+1. EXECUTIVE SYSTEM OVERVIEW
+--------------------------------------------------------------------------------
+The Apex Metal ERP is a specialized, production-ready enterprise software 
+engineered specifically for the metal melting and rolling mill manufacturing sector.
+
+Unlike generic ERPs or simple accounting software, this system addresses the 
+unique, high-stakes operational challenges of metal manufacturing:
+- Liquid metal furnace melting with extreme thermal loss.
+- Slag generation and recoverable mill scale / crop-end scrap.
+- Rolling mill pass reduction and bundle weight management.
+- Dynamic conversion of scrap materials into high-tensile TMT rebars.
+- Multi-store inventory isolation (Raw, WIP Billets, Finished Goods, Scrap).
+- Strict GST tax compliance (CGST, SGST, IGST with HSN codes).
+- Integrated double-entry accounting tied directly to physical shop-floor events.
+
+The software features an executive White & Blue Frosted Glass aesthetic 
+(Glassmorphism) with high contrast, optimized for viewing on factory floor tablets, 
+control cabin touchscreens, and executive desktop workstations.
+
+
+2. CORE DIFFERENTIATOR: AUTOMATIC WEIGHT LOSS & BURNING LOSS ENGINE
+--------------------------------------------------------------------------------
+In metal melting and rolling, tracking material weight loss is the primary driver 
+of factory profitability. A 0.5% unexplained burning loss can cost a mill 
+lakhs of rupees monthly.
+
+The Apex Metal ERP features an automatic, real-time Weight Loss Engine:
+
+A. Weight Loss Mathematical Formulation:
+   - Process Loss (KG) = Input Weight - Finished Output Weight - Recoverable Scrap
+   - Loss Percentage (%) = (Process Loss / Input Weight) * 100
+   - Finished Yield (%) = (Finished Output Weight / Input Weight) * 100
+   - Scrap Recovery (%) = (Recoverable Scrap Weight / Input Weight) * 100
+
+B. Real-Time Unit Production Cost Engine:
+   Total Manufacturing Cost = 
+       Input Material Cost (FIFO Batch Rate)
+     + Labour Wages & Overtime
+     + Electricity / Power Units Consumed
+     + Furnace Fuel (Furnace Oil / Coal / Gas)
+     + Consumables, Chemicals & Mill Overheads
+
+   Unit Cost per Finished KG = Total Manufacturing Cost / Finished Output Weight
+
+C. Tolerance Guardrails & Audit Warnings:
+   - Standard Factory Tolerance: 2.0% to 3.5% burning loss.
+   - If an operator enters an order where loss exceeds the upper threshold (e.g. >3.5%), 
+     the system highlights an amber/red warning banner requiring explicit supervisor 
+     and metallurgical quality sign-off before closing the heat order.
+
+
+3. STANDARD 100 KG -> 97 KG VERIFICATION SCENARIO
+--------------------------------------------------------------------------------
+To prove the mathematical accuracy and end-to-end integration of the system to 
+your client, the software comes pre-loaded with a "Golden Benchmark Scenario":
+
+- Step 1: Inward 100.00 KG of Mild Steel Melting Scrap at ₹100.00 / KG.
+          Total Raw Material Value = ₹10,000.00 (+ GST ₹1,800 + Freight ₹350 = ₹12,150).
+- Step 2: Transfer 100.00 KG into Induction Furnace Heat #HEAT-2026-089.
+- Step 3: Run Melting & Rolling Process:
+          * Finished Output (Fe-500D 12mm TMT Rebars): 97.00 KG (97.0% Yield)
+          * Recoverable Mill Scrap (Scale / Runners):   0.00 KG (or customizable)
+          * Actual Burning Loss:                       3.00 KG (3.00% Loss)
+          * Tolerance Status:                          3.00% is WITHIN 2.0% - 3.5% range.
+- Step 4: Overheads Applied to Heat:
+          * Labour Cost:       ₹1,500.00
+          * Electricity Cost:  ₹2,800.00
+          * Fuel Cost:         ₹850.00
+          * Other Overheads:   ₹350.00
+          * Total Heat Cost:   ₹5,500.00
+- Step 5: Finished Good Valuation:
+          * Effective Cost per KG of Finished Rebar = ₹56.70 / KG.
+          * Finished goods automatically added to Finished Goods Store.
+          * Raw Material batch stock deducted by exactly 100.00 KG.
+
+
+4. IN-DEPTH MODULE-BY-MODULE FUNCTIONALITY
+--------------------------------------------------------------------------------
+
+--------------------------------------------------------------------------------
+MODULE A: EXECUTIVE PLANT DASHBOARD & LIVE TELEMETRY
+--------------------------------------------------------------------------------
+- 12 Real-Time KPI Metric Cards:
+  1. Total Purchases (Gross INR value of raw materials inwarded).
+  2. Total Sales (Gross revenue from dispatched finished goods).
+  3. Raw Material Stock (Real-time live KG on factory floor).
+  4. Finished Goods Stock (Ready-for-dispatch bundles in KG).
+  5. Total Production (Cumulative finished output in KG).
+  6. Total Process Weight Loss (Burning loss in KG).
+  7. Average Loss Percentage (% loss across all furnace heats).
+  8. Labour Expenses (Total wages allocated to heats and shifts).
+  9. Total Operational Costs (Power, fuel, refractory consumables).
+  10. Pending Customer Receivables (Uncollected billing balances).
+  11. Pending Supplier Payables (Outstanding vendor liabilities).
+  12. Net Operating Profit / Loss (Revenue minus COGS and operating expenses).
+
+- Visual Shop-Floor Process Pipeline:
+  An interactive graphic diagram showing real-time material telemetry:
+  Raw Scrap Inventory -> Induction Furnace Melting -> Billet Casting -> Rolling Mill -> Finished TMT Bundles.
+
+- Date Range Filters:
+  Instant filtering across Today, This Week, Current Month, and Financial Year 2025-26.
+
+
+--------------------------------------------------------------------------------
+MODULE B: MANUFACTURING MANAGEMENT & HEAT ORDERS
+--------------------------------------------------------------------------------
+- Heat Order Numbering & Tracking (e.g. MO-2026-0001, Heat #HEAT-2026-089).
+- Furnace Allocation: Select induction furnace (Furnace-1, Furnace-2, Induction Crucible).
+- Raw Material Batch Consumption: Select specific batch ID from raw inventory; prevents 
+  over-consumption beyond available stock.
+- Multi-Stage Recording:
+  * Stage 1: Melting (Tapping temperature, melting time, slag removal).
+  * Stage 2: Continuous Casting (Billet cross-section 100x100mm, hot charging).
+  * Stage 3: Rolling (12-pass mill, water quenching for TMT thermo-mechanical treatment).
+- Weight Reconciliation Form:
+  * Input Weight (KG)
+  * Output Weight (KG)
+  * Recoverable Scrap Weight (KG)
+  * Process Burning Loss (Automatic calculation)
+  * Loss Percentage (Automatic calculation)
+- Cost Component Breakdown:
+  Allows dynamic input of Labour cost, Electricity units/charges, Fuel cost, and consumable expenses.
+- Automatic Stock Transformation:
+  Saving an order atomically:
+  * Deducts raw material batch inventory.
+  * Adds finished goods batch to Finished Store.
+  * Adds recoverable scrap to Scrap Store.
+  * Posts Work-in-Progress (WIP) journal entries to accounting.
+
+
+--------------------------------------------------------------------------------
+MODULE C: 4-STORE REAL-TIME INVENTORY SYSTEM
+--------------------------------------------------------------------------------
+Physical metal mills require strict isolation between material states. The system 
+enforces 4 separate digital stores:
+
+1. Raw Material Store:
+   Heavy melting scrap, turning scrap, sponge iron, DRI, and ferro-alloys.
+2. WIP Billets Store:
+   Hot cast billets, cold stock billets, blooms, and ingots.
+3. Finished Goods Store:
+   Thermo-Mechanically Treated (TMT) rebars (8mm, 10mm, 12mm, 16mm, 20mm, 25mm, 32mm), 
+   structural angles, wire rods, and channels.
+4. Recoverable Scrap Store:
+   Mill scale, crop ends, runner heads, and cobbles that can be recharged into future heats.
+
+Features in Inventory:
+- Batch Traceability: Every batch records inward date, initial weight, available weight, 
+  cost rate, and heat reference.
+- Double-Entry Stock Movement Ledger: Every gram of metal inwarded, transferred, consumed, 
+  or dispatched is logged with source document ID, before/after balances, and user stamps.
+- Stock Adjustment Facility: Authorised manual stock adjustments with mandatory 
+  audit reasons (e.g., Physical Verification Surplus/Deficit).
+- Negative Stock Prevention: Strictly blocks dispatches or furnace charging beyond 
+  physical stock unless an override is authorized.
+
+
+--------------------------------------------------------------------------------
+MODULE D: PURCHASE INWARD & SUPPLIER MANAGEMENT
+--------------------------------------------------------------------------------
+- Multi-Line Inward Purchase Invoices (e.g. PINV-2026-0001).
+- Supplier Directory with GSTIN, State Code, Contact, Billing & Shipping Address, 
+  and Payment Terms (30 days, 45 days, LC, Advance).
+- Automatic GST Engine:
+  * Intra-State Purchases (Same state): Automatically splits tax into 9% CGST + 9% SGST.
+  * Inter-State Purchases (Different state): Automatically calculates 18% IGST.
+- Automatic Stock Inward: Saving a purchase invoice instantly increments raw material 
+  inventory and assigns a unique Batch ID with purchase rate.
+- PDF Purchase Invoice Download: Instant, client-side generation of professional 
+  purchase receipts with letterhead, HSN summary, and tax breakdowns.
+
+
+--------------------------------------------------------------------------------
+MODULE E: SALES DISPATCH, GST BILLING & INVOICING
+--------------------------------------------------------------------------------
+- Customer Tax Invoices (e.g. SINV-2026-0001).
+- Finished Goods Dispatch with Batch Attribution: Dispatches deduct weight directly 
+  from finished goods inventory.
+- Real-Time GST Invoicing:
+  * HSN 7214 20 90 for TMT Steel Bars.
+  * Automatic Taxable Value, CGST (9%), SGST (9%), or IGST (18%).
+  * Freight & Transport Charges, Less Cash Discount.
+- Official PDF GST Tax Invoice Generator:
+  * Generates an authentic Indian GST Tax Invoice in 1 click.
+  * Includes Company Name, GSTIN, State Code, PAN.
+  * Buyer Billing & Shipping Details with GSTIN.
+  * Multi-item table with HSN codes, rates, and quantities.
+  * Comprehensive Tax Table (CGST, SGST, IGST breakdown).
+  * Amount in Words (Indian numbering format).
+  * Bank Account Details for NEFT/RTGS wire transfers.
+  * Authorized Signatory stamp and declaration block.
+- Payment Status Tracking: Paid, Unpaid, or Partial with automatic customer outstanding ledger updates.
+
+
+--------------------------------------------------------------------------------
+MODULE F: DOUBLE-ENTRY ACCOUNTING & FINANCIAL STATEMENTS
+--------------------------------------------------------------------------------
+Unlike lightweight inventory tools that require external Tally or Zoho, this ERP 
+has a native, double-entry general ledger:
+
+- Balanced Journal Entries: Automatically created on Purchase, Manufacturing, Sales, 
+  and Cash/Bank transactions. Enforces Debit = Credit.
+- Chart of Accounts: Categorized into Assets, Liabilities, Equity, Revenue, and Expenses.
+- Real-Time Financial Statements:
+  1. Trial Balance: Complete list of all ledger accounts with balanced debit and credit totals.
+  2. Profit & Loss Statement (P&L):
+     * Gross Sales Revenue
+     * Cost of Goods Sold (Raw Material + Direct Labour + Furnace Power + Fuel + Overheads)
+     * Gross Margin
+     * Net Operating Profit
+  3. Balance Sheet: Real-time accounting of Total Current/Fixed Assets vs. Current Liabilities & Equity.
+- Payment & Receipt Vouchers:
+  * Record vendor payments and customer receipt vouchers.
+  * Multiple payment modes: Bank Transfer (NEFT/RTGS), UPI, Cheque, Cash in Hand.
+  * Tracks bank reference numbers and narration notes.
+
+
+--------------------------------------------------------------------------------
+MODULE G: MASTER DATA MANAGEMENT (11 MASTER TABLES)
+--------------------------------------------------------------------------------
+Enables factory management to configure every aspect of the plant:
+1. Customers Master: GSTIN, State code, credit limits, payment terms.
+2. Suppliers Master: Raw material suppliers, scrap aggregators, alloy traders.
+3. Raw Materials Master: Codes, grades, default purchase rates, minimum reorder thresholds.
+4. Finished Goods Master: TMT rebars, bundle conversion factors, default sales rates.
+5. Categories & Material Grades: MS Scrap, IS 2062, Fe-500D, Fe-550D, Billet 100x100.
+6. Units of Measurement: Kilogram (KG), Metric Ton (TON), Bundles, Pieces.
+7. Warehouses Master: Raw Yard, Furnace Floor, Cooling Bed, Finished Stock Yard.
+8. Manufacturing Units: Induction Furnaces, Continuous Casters, Rolling Mill lines.
+9. Labour & Employees: Furnace operators, rollers, shift supervisors, hourly/daily wages.
+10. Expense Categories: Power & Electricity, Furnace Oil, Gas, Mill Rolls, Transport.
+11. Tax Rates Master: GST 18%, 12%, 5%, 0% exempt.
+
+
+--------------------------------------------------------------------------------
+MODULE H: 15 FACTORY ANALYTICAL REPORTS & EXCEL EXPORT
+--------------------------------------------------------------------------------
+Factory directors can inspect 15 specialized industrial reports with live preview 
+and instant 1-click export to real Microsoft Excel (.xlsx) or CSV:
+
+1. Production Summary Report (Daily/monthly output in KG).
+2. Weight Loss & Burning Loss Audit (Batch-by-batch loss % with tolerance audit).
+3. Raw Material Consumption Analysis (Material consumed vs output yield).
+4. Finished Goods Stock Summary (Stock in KG and bundles ready for sale).
+5. Stock Movement Ledger (Complete chronological audit trail).
+6. Purchase Register (All inward invoices with supplier and GST breakdown).
+7. Supplier-wise Purchase Analysis (Vendor volume and procurement spend).
+8. Sales Register (Dispatches, invoice numbers, and billed amounts).
+9. Customer Outstanding & Receivables (Aging receivables and credit risk).
+10. Furnace Heat-wise Efficiency (Heat-by-heat electricity, fuel, and yield metrics).
+11. Daily Labour & Overtime Cost (Wage distribution across furnace and mill shifts).
+12. Operating Expenses Breakdown (Power, fuel, refractory, and maintenance costs).
+13. GST Input / Output Tax Register (GSTR-1 and GSTR-3B monthly reconciliation).
+14. Profit & Loss Summary (Comprehensive revenue vs cost report).
+15. Stock Valuation Report (FIFO inventory valuation across all 4 stores).
+
+
+--------------------------------------------------------------------------------
+MODULE I: INTERACTIVE 15-STEP WORKFLOW GUIDE
+--------------------------------------------------------------------------------
+Built directly into the ERP interface is an interactive step-by-step walkthrough 
+modal designed for live client presentations:
+- Guides the client through all 15 stages of metal manufacturing.
+- Allows jumping to any corresponding screen with 1 click.
+- Displays exact input/output values, batch IDs, tax rates, and accounting vouchers.
+- Demonstrates how the 100 KG scrap becomes 97 KG rebar with 3% burning loss.
+
+
+5. TECHNICAL ARCHITECTURE & DATA INTEGRITY SAFEGUARDS
+--------------------------------------------------------------------------------
+- Next.js 14 App Router: High-speed rendering, zero lag, smooth transitions.
+- Client-Side React Context Architecture: Runs completely offline in the browser; 
+  zero reliance on external database servers during sales demos.
+- LocalStorage Persistence: Any change (new purchase, manufacturing order, stock 
+  adjustment, sale, or voucher) is instantly saved to the client's local storage.
+- Atomic Stock Transactions: An order either completes fully (deducting raw material, 
+  adding finished good, and posting accounting) or fails cleanly without orphan records.
+- Export Capabilities:
+  * PDF Generator: jsPDF + jsPDF-AutoTable for GST Tax Invoices.
+  * Excel Generator: SheetJS (XLSX) for financial and operational spreadsheets.
+
+
+6. CLIENT PRESENTATION SCRIPT & DEMONSTRATION TIPS
+--------------------------------------------------------------------------------
+Follow this step-by-step demonstration flow during your client presentation:
+
+1. Opening Hook (1 Minute):
+   "Welcome. Today I want to show you an ERP specifically built for metal melting 
+   and rolling mills. Generic ERPs fail in metal plants because they don't understand 
+   furnace burning loss, liquid metal yields, and mill scale. This software handles 
+   the entire shop-floor physics and accounts automatically."
+
+2. Executive Dashboard (2 Minutes):
+   - Point to the 12 KPI cards showing real-time KG stock, burning loss %, and P&L.
+   - Show the Furnace-to-Rolling process flow diagram.
+
+3. The Core Manufacturing & Weight Loss Demo (4 Minutes):
+   - Navigate to "Manufacturing & Loss".
+   - Open an existing order (or click "Record New Heat Order").
+   - Show how entering 100 KG input and 97 KG output instantly calculates 3 KG (3%) 
+     burning loss and computes unit cost (₹56.70 / KG).
+   - Point out the tolerance indicator: "Notice it validates if loss is within 
+     your plant's acceptable 2.0% - 3.5% range."
+
+4. The 4-Store Inventory System (2 Minutes):
+   - Navigate to "Inventory & Batches".
+   - Show the 4 tabs: Raw Scrap, WIP Billets, Finished Rebars, Recoverable Scrap.
+   - Show how the 100 KG deduction and 97 KG addition are logged in the Batch Ledger.
+
+5. GST Billing & PDF Generation (2 Minutes):
+   - Navigate to "Sales & Invoicing".
+   - Click "Print GST Invoice" on an invoice.
+   - Show the generated Indian GST Tax Invoice with HSN code 7214 20 90, CGST/SGST, 
+     and bank details.
+
+6. Double-Entry Accounting & Reports (2 Minutes):
+   - Navigate to "Double-Entry Accounts" -> show the Balanced Trial Balance and P&L.
+   - Navigate to "Reports & Analytics" -> select "Weight Loss & Burning Loss Audit" 
+     and click "Export to Excel (.xlsx)". Show the downloaded spreadsheet.
+
+7. Closing Call-to-Action:
+   - "This software is production-ready, intuitive for factory operators, and provides 
+     management with real-time control over every rupee and every kilogram."
+================================================================================
+END OF SPECIFICATION DOCUMENT
+================================================================================
