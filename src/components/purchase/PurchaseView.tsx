@@ -15,6 +15,7 @@ import {
   FileText,
   Boxes,
   Sparkles,
+  X,
 } from 'lucide-react';
 import { useERP } from '@/context/ERPContext';
 import { formatCurrency, formatKg, formatDate } from '@/lib/utils';
@@ -145,35 +146,35 @@ export const PurchaseView: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
-              <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
-                <ShoppingCart className="w-5 h-5 text-blue-600" />
-                Purchase Invoices & Raw Material Inward
-              </h2>
-                <p className="text-xs text-slate-500 mt-1">
-                  Supplier Billing, Automatic Raw Material Inventory Inward, GST Input Tax Credit & Accounting.
-                </p>
-              </div>
-
-              <div className="flex items-center gap-3">
-                <button
-                  onClick={() => exportToExcel(state.purchaseInvoices, 'Purchase_Invoices_Report')}
-                  className="px-3.5 py-2 rounded-xl bg-white hover:bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1.5 transition-colors border border-blue-200 shadow-xs"
-                >
-                  <Download className="w-4 h-4 text-blue-600" />
-                  <span>Export Excel</span>
-                </button>
-
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md shadow-blue-500/25 flex items-center gap-2 transition-all active:scale-[0.98]"
-                >
-                  <Plus className="w-4 h-4" />
-                  <span>Create Purchase Invoice</span>
-                </button>
-              </div>
+            <h2 className="text-lg sm:text-xl font-extrabold text-slate-900 flex items-center gap-2">
+              <ShoppingCart className="w-5 h-5 text-blue-600" />
+              Purchase Invoices & Raw Material Inward
+            </h2>
+            <p className="text-xs text-slate-500 mt-1">
+              Supplier Billing, Automatic Raw Material Inventory Inward, GST Input Tax Credit & Accounting.
+            </p>
           </div>
+
+          <div className="flex flex-wrap sm:flex-nowrap items-center gap-2 sm:gap-3">
+            <button
+              onClick={() => exportToExcel(state.purchaseInvoices, 'Purchase_Invoices_Report')}
+              className="py-2 px-3 sm:px-3.5 rounded-xl bg-white hover:bg-blue-50 text-blue-700 text-xs font-bold flex items-center gap-1.5 transition-colors border border-blue-200 shadow-xs cursor-pointer"
+            >
+              <Download className="w-4 h-4 text-blue-600" />
+              <span>Export Excel</span>
+            </button>
+
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="py-2 px-3 sm:px-4 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md shadow-blue-500/25 flex items-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
+            >
+              <Plus className="w-4 h-4" />
+              <span>Create Purchase Invoice</span>
+            </button>
+          </div>
+        </div>
 
               {/* Invoices Table in White & Blue Glass */}
               <div className="rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 overflow-hidden">
@@ -252,40 +253,50 @@ export const PurchaseView: React.FC = () => {
                                   </div>
                                 </div>
 
-                              {/* CREATE PURCHASE INVOICE MODAL (WHITE & BLUE GLASS) */ }
-                              {
-                                isModalOpen && (
-                                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/30 backdrop-blur-md animate-in fade-in duration-200">
-                                          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200/80 rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
-                                            <div className="px-6 py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex items-center justify-between">
-                                              <div className="flex items-center gap-3">
-                                                  <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25 text-white font-bold">
-                                                    <ShoppingCart className="w-5 h-5" />
-                                                  </div>
-                                                  <div>
-                                                      <h3 className="text-base font-extrabold text-slate-900">
-                                                        Record Inward Purchase Invoice
-                                                      </h3>
-                                                        <p className="text-xs text-slate-500 mt-0.5">
-                                                          Select vendor, add raw materials, compute GST and automatically inward to inventory.
-                                                        </p>
-                                                      </div>
-                                                  </div>
+      {/* CREATE PURCHASE INVOICE MODAL (WHITE & BLUE GLASS) */}
+      {isModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200/80 rounded-2xl sm:rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[92vh]">
+            <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="flex items-center gap-3">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center shadow-lg shadow-blue-500/25 text-white font-bold flex-shrink-0">
+                  <ShoppingCart className="w-4 h-4 sm:w-5 sm:h-5" />
+                </div>
+                <div>
+                  <h3 className="text-sm sm:text-base font-extrabold text-slate-900">
+                    Record Inward Purchase Invoice
+                  </h3>
+                  <p className="text-[11px] sm:text-xs text-slate-500 mt-0.5">
+                    Select vendor, add raw materials, compute GST and automatically inward to inventory.
+                  </p>
+                </div>
+              </div>
 
-                                                  <button
-                                                    type="button"
-                                                    onClick={() => {
-                                                      const demoMat = state.materials.find(m => m.code === 'RAW-MS-SCRAP-100') || state.materials[0];
-                                                      setSupplierId(state.suppliers[0].id);
-                                                      setItems([{ materialId: demoMat.id, quantityKg: 100, ratePerKg: 100 }]);
-                                                      setFreightCharges(350);
-                                                    }}
-                                                    className="py-1.5 px-3 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-bold border border-blue-300 flex items-center gap-1.5 transition-all shadow-xs"
-                                                  >
-                                                    <Sparkles className="w-3.5 h-3.5 text-blue-700" />
-                                                    <span>Fill 100KG Test Invoice</span>
-                                                  </button>
-                                                </div>
+              <div className="flex items-center gap-2 self-end sm:self-auto">
+                <button
+                  type="button"
+                  onClick={() => {
+                    const demoMat = state.materials.find(m => m.code === 'RAW-MS-SCRAP-100') || state.materials[0];
+                    setSupplierId(state.suppliers[0].id);
+                    setItems([{ materialId: demoMat.id, quantityKg: 100, ratePerKg: 100 }]);
+                    setFreightCharges(350);
+                  }}
+                  className="py-1.5 px-2.5 sm:px-3 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-800 text-[11px] sm:text-xs font-bold border border-blue-300 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-blue-700" />
+                  <span>Fill 100KG Test Data</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                  title="Close"
+                >
+                  <X className="w-5 h-5 text-slate-600" />
+                </button>
+              </div>
+            </div>
 
                                                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
                                                   {/* Header Info */}
@@ -349,8 +360,8 @@ export const PurchaseView: React.FC = () => {
 
                                                       <div className="space-y-2">
                                                         {items.map((item, idx) => (
-                                                            <div key={idx} className="grid grid-cols-12 gap-3 items-center p-3 rounded-xl bg-white border border-blue-100 text-xs shadow-xs">
-                                                              <div className="col-span-5">
+                                                            <div key={idx} className="flex flex-col sm:grid sm:grid-cols-12 gap-3 items-stretch sm:items-center p-3 rounded-xl bg-white border border-blue-100 text-xs shadow-xs">
+                                                              <div className="sm:col-span-5">
                                                                 <label className="block text-[10px] text-slate-500 font-medium mb-1">Raw Material</label>
                                                                 <select
                                                                   value={item.materialId}
@@ -369,43 +380,46 @@ export const PurchaseView: React.FC = () => {
                                                                 </select>
                                                               </div>
 
-                                                              <div className="col-span-3">
-                                                                <label className="block text-[10px] text-slate-500 font-medium mb-1">Quantity (KG)</label>
-                                                                <input
-                                                                  type="number"
-                                                                  step="0.01"
-                                                                  value={item.quantityKg}
-                                                                  onChange={e => {
-                                                                    const newItems = [...items];
-                                                                    newItems[idx].quantityKg = Number(e.target.value);
-                                                                    setItems(newItems);
-                                                                  }}
-                                                                  className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono font-bold focus:outline-none"
-                                                                  required
-                                                                />
+                                                              <div className="grid grid-cols-2 gap-2 sm:col-span-6">
+                                                                <div>
+                                                                  <label className="block text-[10px] text-slate-500 font-medium mb-1">Quantity (KG)</label>
+                                                                  <input
+                                                                    type="number"
+                                                                    step="0.01"
+                                                                    value={item.quantityKg}
+                                                                    onChange={e => {
+                                                                      const newItems = [...items];
+                                                                      newItems[idx].quantityKg = Number(e.target.value);
+                                                                      setItems(newItems);
+                                                                    }}
+                                                                    className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono font-bold focus:outline-none"
+                                                                    required
+                                                                  />
+                                                                </div>
+
+                                                                <div>
+                                                                  <label className="block text-[10px] text-slate-500 font-medium mb-1">Rate / KG (₹)</label>
+                                                                  <input
+                                                                    type="number"
+                                                                    step="0.01"
+                                                                    value={item.ratePerKg}
+                                                                    onChange={e => {
+                                                                      const newItems = [...items];
+                                                                      newItems[idx].ratePerKg = Number(e.target.value);
+                                                                      setItems(newItems);
+                                                                    }}
+                                                                    className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono focus:outline-none"
+                                                                    required
+                                                                  />
+                                                                </div>
                                                               </div>
 
-                                                              <div className="col-span-3">
-                                                                <label className="block text-[10px] text-slate-500 font-medium mb-1">Rate / KG (₹)</label>
-                                                                <input
-                                                                  type="number"
-                                                                  step="0.01"
-                                                                  value={item.ratePerKg}
-                                                                  onChange={e => {
-                                                                    const newItems = [...items];
-                                                                    newItems[idx].ratePerKg = Number(e.target.value);
-                                                                    setItems(newItems);
-                                                                  }}
-                                                                  className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono focus:outline-none"
-                                                                  required
-                                                                />
-                                                              </div>
-
-                                                              <div className="col-span-1 pt-4 text-right">
+                                                              <div className="sm:col-span-1 flex justify-end sm:pt-4">
                                                                 <button
                                                                   type="button"
                                                                   onClick={() => handleRemoveItem(idx)}
                                                                   className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50"
+                                                                  title="Remove Item"
                                                                 >
                                                                   <Trash2 className="w-4 h-4" />
                                                                 </button>

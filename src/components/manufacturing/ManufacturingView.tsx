@@ -19,6 +19,7 @@ import {
   Thermometer,
   Sparkles,
   Info,
+  X,
 } from 'lucide-react';
 import { useERP } from '@/context/ERPContext';
 import { formatCurrency, formatKg, formatDate } from '@/lib/utils';
@@ -178,12 +179,12 @@ export const ManufacturingView: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-blue-100 space-x-2">
+      <div className="flex border-b border-blue-100 space-x-2 overflow-x-auto custom-scrollbar">
         <button
           onClick={() => setActiveTab('orders')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'orders'
-              ? 'border-orange-500 text-amber-300 bg-white/70'
+              ? 'border-orange-500 text-amber-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -193,9 +194,9 @@ export const ManufacturingView: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('loss_report')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'loss_report'
-              ? 'border-orange-500 text-amber-300 bg-white/70'
+              ? 'border-orange-500 text-amber-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -205,9 +206,9 @@ export const ManufacturingView: React.FC = () => {
 
         <button
           onClick={() => setActiveTab('labour_wages')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeTab === 'labour_wages'
-              ? 'border-orange-500 text-amber-300 bg-white/70'
+              ? 'border-orange-500 text-amber-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -427,10 +428,10 @@ export const ManufacturingView: React.FC = () => {
 
       {/* CREATE MANUFACTURING ORDER MODAL (WITH LIVE WEIGHT LOSS CALCULATOR) */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-white/80 border border-blue-200 rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[95vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200 rounded-2xl sm:rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[92vh]">
             {/* Header */}
-            <div className="px-6 py-4 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-blue-100 flex items-center justify-between">
+            <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-orange-500 to-amber-600 flex items-center justify-center shadow-lg shadow-orange-500/20 text-white font-bold">
                   <Flame className="w-5 h-5" />
@@ -445,16 +446,27 @@ export const ManufacturingView: React.FC = () => {
                 </div>
               </div>
 
-              {/* Prefill 100KG Test Button */}
-              <button
-                type="button"
-                onClick={handlePrefill100Kg}
-                className="py-1.5 px-3 rounded-lg bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 text-xs font-semibold border border-amber-500/40 flex items-center gap-1.5 transition-all"
-                title="Prefill 100 KG -> 97 KG Standard Test Case"
-              >
-                <Sparkles className="w-3.5 h-3.5" />
-                <span>Load 100KG Golden Test Data</span>
-              </button>
+              <div className="flex items-center gap-2 self-end sm:self-auto">
+                {/* Prefill 100KG Test Button */}
+                <button
+                  type="button"
+                  onClick={handlePrefill100Kg}
+                  className="py-1.5 px-3 rounded-xl bg-blue-100 hover:bg-blue-200 text-blue-800 text-xs font-bold border border-blue-300 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                  title="Prefill 100 KG -> 97 KG Standard Test Case"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-blue-700" />
+                  <span>Load 100KG Test Data</span>
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                  title="Close"
+                >
+                  <X className="w-5 h-5 text-slate-600" />
+                </button>
+              </div>
             </div>
 
             {/* Modal Body Form */}

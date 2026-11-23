@@ -15,6 +15,7 @@ import {
   Scale,
   Receipt,
   CreditCard,
+  X,
 } from 'lucide-react';
 import { useERP } from '@/context/ERPContext';
 import { formatCurrency, formatDate } from '@/lib/utils';
@@ -526,14 +527,24 @@ export const AccountingView: React.FC = () => {
 
       {/* VOUCHER CREATION MODAL */}
       {isVoucherModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/80 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-white/80 border border-blue-200 rounded-2xl max-w-md w-full shadow-2xl overflow-hidden p-6 space-y-4">
-            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
-              <Receipt className="w-5 h-5 text-blue-600" />
-              Record Payment / Receipt Voucher
-            </h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
+          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200 rounded-2xl sm:rounded-3xl max-w-md w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
+            <div className="px-5 py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex items-center justify-between">
+              <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+                <Receipt className="w-5 h-5 text-blue-600" />
+                Record Payment / Receipt Voucher
+              </h3>
+              <button
+                type="button"
+                onClick={() => setIsVoucherModalOpen(false)}
+                className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                title="Close"
+              >
+                <X className="w-5 h-5 text-slate-600" />
+              </button>
+            </div>
 
-            <form onSubmit={handleVoucherSubmit} className="space-y-4 text-xs">
+            <form onSubmit={handleVoucherSubmit} className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 custom-scrollbar text-xs">
               <div className="grid grid-cols-2 gap-3">
                 <div>
                   <label className="block text-slate-500 mb-1 font-medium">Voucher Type</label>

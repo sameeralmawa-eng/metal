@@ -13,6 +13,7 @@ import {
   Sparkles,
   Printer,
   Trash2,
+  X,
 } from 'lucide-react';
 import { useERP } from '@/context/ERPContext';
 import { formatCurrency, formatKg, formatDate } from '@/lib/utils';
@@ -144,7 +145,7 @@ export const SalesView: React.FC = () => {
   return (
     <div className="space-y-6">
       {/* Top Header */}
-        <div className="p-6 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div className="p-4 sm:p-6 rounded-3xl bg-white/80 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
           <div>
               <h2 className="text-xl font-extrabold text-slate-900 flex items-center gap-2">
                 <TrendingUp className="w-5 h-5 text-emerald-600" />
@@ -254,9 +255,9 @@ export const SalesView: React.FC = () => {
                               {/* CREATE SALES INVOICE MODAL (WHITE & BLUE GLASS) */ }
                               {
                                 isModalOpen && (
-                                        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/30 backdrop-blur-md animate-in fade-in duration-200">
-                                          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200/80 rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[92vh]">
-                                            <div className="px-6 py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex items-center justify-between">
+                                        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
+                                          <div className="bg-white/95 backdrop-blur-2xl border border-blue-200/80 rounded-2xl sm:rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[92vh]">
+                                            <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                                               <div className="flex items-center gap-3">
                                                   <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-600 flex items-center justify-center shadow-lg shadow-emerald-500/25 text-white font-bold">
                                                     <TrendingUp className="w-5 h-5" />
@@ -271,19 +272,30 @@ export const SalesView: React.FC = () => {
                                                       </div>
                                                   </div>
 
-                                                  <button
-                                                    type="button"
-                                                    onClick={() => {
-                                                      const fgMat = state.materials.find(m => m.code === 'FG-TMT-97KG-TEST') || state.materials.find(m => m.category === 'FINISHED_GOODS');
-                                                      setCustomerId(state.customers[0].id);
-                                                      setItems([{ materialId: fgMat?.id || state.materials[0].id, quantityKg: 97, ratePerKg: 125 }]);
-                                                      setFreightCharges(400);
-                                                    }}
-                                                    className="py-1.5 px-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold border border-emerald-300 flex items-center gap-1.5 transition-all shadow-xs"
-                                                  >
-                                                    <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
-                                                    <span>Fill 97KG Test Invoice</span>
-                                                  </button>
+                                                  <div className="flex items-center gap-2 self-end sm:self-auto">
+                                                    <button
+                                                      type="button"
+                                                      onClick={() => {
+                                                        const fgMat = state.materials.find(m => m.code === 'FG-TMT-97KG-TEST') || state.materials.find(m => m.category === 'FINISHED_GOODS');
+                                                        setCustomerId(state.customers[0].id);
+                                                        setItems([{ materialId: fgMat?.id || state.materials[0].id, quantityKg: 97, ratePerKg: 125 }]);
+                                                        setFreightCharges(400);
+                                                      }}
+                                                      className="py-1.5 px-3 rounded-xl bg-emerald-100 hover:bg-emerald-200 text-emerald-800 text-xs font-bold border border-emerald-300 flex items-center gap-1.5 transition-all shadow-xs cursor-pointer"
+                                                    >
+                                                      <Sparkles className="w-3.5 h-3.5 text-emerald-700" />
+                                                      <span>Fill 97KG Test Invoice</span>
+                                                    </button>
+
+                                                    <button
+                                                      type="button"
+                                                      onClick={() => setIsModalOpen(false)}
+                                                      className="p-1.5 text-slate-400 hover:text-slate-700 hover:bg-slate-100 rounded-lg transition-colors cursor-pointer"
+                                                      title="Close"
+                                                    >
+                                                      <X className="w-5 h-5 text-slate-600" />
+                                                    </button>
+                                                  </div>
                                                 </div>
 
                                                 <form onSubmit={handleSubmit} className="flex-1 overflow-y-auto p-6 space-y-6 custom-scrollbar">
@@ -350,8 +362,8 @@ export const SalesView: React.FC = () => {
                                                         {items.map((item, idx) => {
                                                           const mat = state.materials.find(m => m.id === item.materialId);
                                                           return (
-                                                              <div key={idx} className="grid grid-cols-12 gap-3 items-center p-3 rounded-xl bg-white border border-blue-100 text-xs shadow-xs">
-                                                                <div className="col-span-5">
+                                                              <div key={idx} className="flex flex-col sm:grid sm:grid-cols-12 gap-3 items-stretch sm:items-center p-3 rounded-xl bg-white border border-blue-100 text-xs shadow-xs">
+                                                                <div className="sm:col-span-5">
                                                                     <label className="block text-[10px] text-slate-500 font-medium mb-1">
                                                                       Finished Product ({mat ? `${formatKg(mat.currentStock)} in stock` : ''})
                                                                     </label>
@@ -374,43 +386,46 @@ export const SalesView: React.FC = () => {
                                                                     </select>
                                                                 </div>
 
-                                                                <div className="col-span-3">
-                                                                  <label className="block text-[10px] text-slate-500 font-medium mb-1">Quantity (KG)</label>
-                                                                  <input
-                                                                    type="number"
-                                                                    step="0.01"
-                                                                    value={item.quantityKg}
-                                                                    onChange={e => {
-                                                                      const newItems = [...items];
-                                                                      newItems[idx].quantityKg = Number(e.target.value);
-                                                                      setItems(newItems);
-                                                                    }}
-                                                                    className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-emerald-700 font-mono font-bold focus:outline-none"
-                                                                    required
-                                                                  />
+                                                                <div className="grid grid-cols-2 gap-2 sm:col-span-6">
+                                                                  <div>
+                                                                    <label className="block text-[10px] text-slate-500 font-medium mb-1">Quantity (KG)</label>
+                                                                    <input
+                                                                      type="number"
+                                                                      step="0.01"
+                                                                      value={item.quantityKg}
+                                                                      onChange={e => {
+                                                                        const newItems = [...items];
+                                                                        newItems[idx].quantityKg = Number(e.target.value);
+                                                                        setItems(newItems);
+                                                                      }}
+                                                                      className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-emerald-700 font-mono font-bold focus:outline-none"
+                                                                      required
+                                                                    />
+                                                                  </div>
+
+                                                                  <div>
+                                                                    <label className="block text-[10px] text-slate-500 font-medium mb-1">Selling Rate / KG (₹)</label>
+                                                                    <input
+                                                                      type="number"
+                                                                      step="0.01"
+                                                                      value={item.ratePerKg}
+                                                                      onChange={e => {
+                                                                        const newItems = [...items];
+                                                                        newItems[idx].ratePerKg = Number(e.target.value);
+                                                                        setItems(newItems);
+                                                                      }}
+                                                                      className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono focus:outline-none"
+                                                                      required
+                                                                    />
+                                                                  </div>
                                                                 </div>
 
-                                                                <div className="col-span-3">
-                                                                  <label className="block text-[10px] text-slate-500 font-medium mb-1">Selling Rate / KG (₹)</label>
-                                                                  <input
-                                                                    type="number"
-                                                                    step="0.01"
-                                                                    value={item.ratePerKg}
-                                                                    onChange={e => {
-                                                                      const newItems = [...items];
-                                                                      newItems[idx].ratePerKg = Number(e.target.value);
-                                                                      setItems(newItems);
-                                                                    }}
-                                                                    className="w-full bg-white border border-blue-200 rounded-lg px-2.5 py-1.5 text-slate-900 font-mono focus:outline-none"
-                                                                    required
-                                                                  />
-                                                                </div>
-
-                                                                <div className="col-span-1 pt-4 text-right">
+                                                                <div className="sm:col-span-1 flex justify-end sm:pt-4">
                                                                   <button
                                                                     type="button"
                                                                     onClick={() => handleRemoveItem(idx)}
                                                                     className="p-1.5 rounded-lg text-slate-400 hover:text-rose-600 hover:bg-rose-50"
+                                                                    title="Remove Item"
                                                                   >
                                                                     <Trash2 className="w-4 h-4" />
                                                                   </button>

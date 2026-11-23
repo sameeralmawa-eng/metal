@@ -182,12 +182,12 @@ export const InventoryView: React.FC = () => {
       </div>
 
       {/* Tabs */}
-      <div className="flex border-b border-blue-100 space-x-2">
+      <div className="flex border-b border-blue-100 space-x-2 overflow-x-auto custom-scrollbar">
         <button
           onClick={() => setActiveCategory('ALL')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeCategory === 'ALL'
-              ? 'border-blue-500 text-blue-300 bg-white/70'
+              ? 'border-blue-500 text-blue-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -197,9 +197,9 @@ export const InventoryView: React.FC = () => {
 
         <button
           onClick={() => setActiveCategory('BATCHES')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeCategory === 'BATCHES'
-              ? 'border-blue-500 text-blue-300 bg-white/70'
+              ? 'border-blue-500 text-blue-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -209,9 +209,9 @@ export const InventoryView: React.FC = () => {
 
         <button
           onClick={() => setActiveCategory('LEDGER')}
-          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 ${
+          className={`py-2.5 px-4 text-xs font-semibold rounded-t-xl transition-all border-b-2 flex items-center gap-2 whitespace-nowrap ${
             activeCategory === 'LEDGER'
-              ? 'border-blue-500 text-blue-300 bg-white/70'
+              ? 'border-blue-500 text-blue-600 bg-white/70'
               : 'border-transparent text-slate-500 hover:text-blue-600'
           }`}
         >
@@ -414,7 +414,7 @@ export const InventoryView: React.FC = () => {
 
       {/* STOCK ADJUSTMENT MODAL */}
       {isAdjModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/80 backdrop-blur-md animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
           <div className="bg-white/80 border border-blue-200 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden p-6 space-y-4">
             <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
               <Boxes className="w-5 h-5 text-blue-400" />

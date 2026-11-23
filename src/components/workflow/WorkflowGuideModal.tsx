@@ -177,10 +177,10 @@ export const WorkflowGuideModal: React.FC<WorkflowGuideModalProps> = ({
   const currentStepData = steps.find(s => s.step === activeStep) || steps[0];
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-white/80 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="bg-white/80 border border-blue-200/80 rounded-2xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[90vh]">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-slate-900/40 backdrop-blur-md animate-in fade-in duration-200">
+      <div className="bg-white/95 backdrop-blur-2xl border border-blue-200/80 rounded-2xl sm:rounded-3xl max-w-4xl w-full shadow-2xl overflow-hidden flex flex-col max-h-[95vh] sm:max-h-[90vh]">
         {/* Modal Header */}
-        <div className="px-6 py-4 bg-gradient-to-r from-slate-950 via-slate-900 to-slate-950 border-b border-blue-100 flex items-center justify-between">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-50/90 via-indigo-50/50 to-white/90 border-b border-blue-100 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-amber-500 to-orange-600 flex items-center justify-center shadow-lg shadow-orange-500/20 text-white font-bold">
               <Sparkles className="w-5 h-5" />
@@ -206,18 +206,18 @@ export const WorkflowGuideModal: React.FC<WorkflowGuideModalProps> = ({
         </div>
 
         {/* Modal Body: Left Step list + Right Details */}
-        <div className="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-[460px]">
-          {/* Step Selector List */}
-          <div className="md:col-span-5 border-r border-blue-100 overflow-y-auto p-3 space-y-1.5 custom-scrollbar bg-white/40">
+        <div className="flex-1 overflow-hidden grid grid-cols-1 md:grid-cols-12 min-h-0 md:min-h-[460px]">
+          {/* Step Selector List: Horizontal pill bar on mobile, vertical sidebar on desktop */}
+          <div className="md:col-span-5 flex md:flex-col overflow-x-auto md:overflow-y-auto p-2.5 md:p-3 gap-2 md:gap-0 md:space-y-1.5 border-b md:border-b-0 md:border-r border-blue-100 flex-shrink-0 bg-white/60 custom-scrollbar">
             {steps.map(s => {
               const isCurrent = s.step === activeStep;
               return (
                 <button
                   key={s.step}
                   onClick={() => setActiveStep(s.step)}
-                  className={`w-full text-left p-2.5 rounded-xl transition-all flex items-center gap-3 ${
+                  className={`flex-shrink-0 md:flex-shrink w-auto md:w-full text-left px-3 py-2 md:p-2.5 rounded-xl transition-all flex items-center gap-2 md:gap-3 cursor-pointer ${
                     isCurrent
-                      ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/10 border border-orange-500/40 text-amber-200 shadow-sm'
+                      ? 'bg-gradient-to-r from-orange-500/20 to-amber-500/10 border border-orange-500/40 text-orange-600 shadow-xs'
                       : 'hover:bg-blue-50/60 text-slate-500 hover:text-slate-800'
                   }`}
                 >
@@ -231,21 +231,21 @@ export const WorkflowGuideModal: React.FC<WorkflowGuideModalProps> = ({
                     {s.step}
                   </span>
                   <div className="flex-1 min-w-0">
-                    <div className="text-xs font-semibold truncate text-slate-800">
+                    <div className="text-xs font-semibold whitespace-nowrap md:whitespace-normal md:truncate text-slate-800">
                       {s.title}
                     </div>
-                    <div className="text-[10px] text-slate-500 truncate">
+                    <div className="text-[10px] text-slate-500 hidden md:block truncate">
                       {s.highlight}
                     </div>
                   </div>
-                  <CheckCircle2 className="w-4 h-4 text-emerald-400 flex-shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500 flex-shrink-0" />
                 </button>
               );
             })}
           </div>
 
           {/* Active Step Details Panel */}
-          <div className="md:col-span-7 p-6 flex flex-col justify-between overflow-y-auto bg-white/70">
+          <div className="md:col-span-7 p-4 sm:p-6 flex flex-col justify-between overflow-y-auto bg-white/70">
             <div>
               <div className="flex items-center justify-between pb-3 border-b border-blue-100">
                 <span className="text-xs font-mono font-semibold uppercase tracking-wider text-orange-400 flex items-center gap-1.5">

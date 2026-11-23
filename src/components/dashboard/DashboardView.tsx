@@ -82,52 +82,52 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onOpen
   return (
     <div className="space-y-6">
       {/* Top Welcome & KPI Header Banner */}
-      <div className="p-6 rounded-2xl bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-950 border border-blue-100 shadow-xl relative overflow-hidden">
-        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-orange-500/10 via-amber-500/5 to-transparent rounded-full blur-3xl pointer-events-none" />
+      <div className="p-4 sm:p-6 rounded-3xl bg-white/85 backdrop-blur-xl border border-blue-100 shadow-xl shadow-blue-500/5 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-blue-400/10 via-indigo-400/5 to-transparent rounded-full blur-3xl pointer-events-none" />
 
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 relative z-10">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-500/15 border border-orange-500/30 text-amber-300 text-xs font-semibold mb-2">
-              <Flame className="w-3.5 h-3.5 text-orange-400 animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-orange-50 border border-orange-200 text-orange-700 text-xs font-semibold mb-2">
+              <Flame className="w-3.5 h-3.5 text-orange-500 animate-pulse" />
               <span>Plant Telemetry • Induction Heat: 1,620°C Active</span>
             </div>
-            <h2 className="text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
               Metal Melting & Rolling Operations Center
             </h2>
-            <p className="text-slate-500 text-xs sm:text-sm mt-1 max-w-2xl">
+            <p className="text-slate-600 text-xs sm:text-sm mt-1 max-w-2xl">
               Real-time monitoring of scrap charge, induction furnace melting loss, 12-stand continuous rolling, inventory valuation, and GST double-entry accounting.
             </p>
           </div>
 
           {/* Quick Period Selector & Guide Button */}
-          <div className="flex items-center gap-3">
-            <div className="bg-white/80 p-1 rounded-xl border border-blue-100 flex items-center text-xs">
+          <div className="flex flex-wrap items-center gap-3">
+            <div className="bg-blue-50/70 p-1 rounded-xl border border-blue-200 flex items-center text-xs">
               <button
                 onClick={() => setPeriod('today')}
-                className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
                   period === 'today'
-                    ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40'
-                    : 'text-slate-500 hover:text-slate-800'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    : 'text-slate-600 hover:text-blue-700'
                 }`}
               >
                 Today
               </button>
               <button
                 onClick={() => setPeriod('month')}
-                className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
                   period === 'month'
-                    ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40'
-                    : 'text-slate-500 hover:text-slate-800'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    : 'text-slate-600 hover:text-blue-700'
                 }`}
               >
                 Nov 2026
               </button>
               <button
                 onClick={() => setPeriod('year')}
-                className={`px-3 py-1.5 rounded-lg font-medium transition-all ${
+                className={`px-3 py-1.5 rounded-lg font-medium transition-all cursor-pointer ${
                   period === 'year'
-                    ? 'bg-amber-500/20 text-amber-300 font-bold border border-amber-500/40'
-                    : 'text-slate-500 hover:text-slate-800'
+                    ? 'bg-blue-600 text-white font-bold shadow-xs'
+                    : 'text-slate-600 hover:text-blue-700'
                 }`}
               >
                 FY 26-27
@@ -136,7 +136,7 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onOpen
 
             <button
               onClick={onOpenWorkflow}
-              className="px-3.5 py-2 rounded-xl bg-orange-600 hover:bg-orange-500 text-white font-semibold text-xs shadow-md shadow-orange-600/30 flex items-center gap-2 transition-all active:scale-[0.98]"
+              className="px-3.5 py-2 rounded-xl bg-gradient-to-r from-orange-500 to-amber-600 hover:from-orange-600 hover:to-amber-700 text-white font-semibold text-xs shadow-md shadow-orange-500/20 flex items-center gap-2 transition-all active:scale-[0.98] cursor-pointer"
             >
               <Sparkles className="w-3.5 h-3.5 text-amber-200" />
               <span>15-Step Tour</span>
@@ -250,25 +250,25 @@ export const DashboardView: React.FC<DashboardViewProps> = ({ onNavigate, onOpen
         {/* 6. Manufacturing Loss & Percentage (CRITICAL METRIC) */}
         <div
           onClick={() => onNavigate('manufacturing')}
-          className="p-4 rounded-xl bg-gradient-to-br from-slate-900 to-amber-950/20 border border-amber-500/30 hover:border-amber-500/50 transition-all cursor-pointer group shadow-sm hover:shadow-md"
+          className="p-4 rounded-xl bg-gradient-to-br from-amber-500/10 to-orange-500/10 border border-amber-200 hover:border-amber-400 transition-all cursor-pointer group shadow-xs hover:shadow-md"
         >
           <div className="flex items-center justify-between text-xs text-slate-500 mb-2">
-            <span className="font-medium text-amber-200">Manufacturing Process Loss</span>
-            <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400 group-hover:scale-110 transition-transform">
+            <span className="font-semibold text-amber-800">Manufacturing Process Loss</span>
+            <div className="p-2 rounded-lg bg-amber-500/20 text-amber-700 group-hover:scale-110 transition-transform">
               <Scale className="w-4 h-4" />
             </div>
           </div>
           <div className="flex items-baseline gap-2">
-            <span className="text-xl font-bold text-amber-300 font-mono">
+            <span className="text-xl font-bold text-amber-700 font-mono">
               {formatKg(totalLossKg)}
             </span>
-            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 font-mono">
+            <span className="text-xs font-bold px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-700 border border-emerald-500/30 font-mono">
               {avgLossPercentage.toFixed(2)}% Loss
             </span>
           </div>
           <div className="mt-2 text-[11px] text-slate-500 flex items-center justify-between">
             <span>Expected: 2.0% - 3.5%</span>
-            <span className="text-emerald-400 font-semibold flex items-center gap-1">
+            <span className="text-emerald-700 font-semibold flex items-center gap-1">
               <CheckCircle className="w-3 h-3" />
               Within Limit
             </span>
